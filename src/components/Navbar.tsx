@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import logoWhite from "@/app/assets/logos/logo-white.svg";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -53,10 +55,15 @@ const Navbar = () => {
         {/* Logo */}
         <Link
           href="/"
-          className="font-headline text-2xl font-bold tracking-tight text-foreground flex items-center gap-2 group"
+          className="flex items-center gap-2 group"
         >
-          <span className="text-primary font-black italic transition-transform group-hover:scale-110">C.</span>
-          <span className="uppercase tracking-widest text-lg font-headline">Chokmarh</span>
+          <Image 
+            src={logoWhite} 
+            alt="Chokmarh Logo" 
+            height={32} 
+            className="w-auto h-8 transition-transform group-hover:scale-105"
+            priority 
+          />
         </Link>
 
         {/* Desktop Nav */}
