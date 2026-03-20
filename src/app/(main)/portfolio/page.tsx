@@ -81,74 +81,51 @@ const PortfolioPage = () => {
       </section>
 
       {/* Projects List */}
-      <section className="py-20 px-6 border-t border-border/50">
+      <section className="py-20 px-2 border-t border-border/50">
         <div className="container mx-auto max-w-[1280px]">
-          <div className="divide-y divide-border/50">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, i) => (
               <ScrollReveal key={project.title} delay={i * 0.1}>
-                <div className="group py-12 md:py-24 grid md:grid-cols-12 gap-8 items-center hover:bg-white/[0.02] transition-all px-4 -mx-4 rounded-3xl relative">
-                  <div className="md:col-span-4 space-y-4">
+                <Link href={`/portfolio/${project.slug}`} className="group block h-full">
+                  <div className={`relative rounded-3xl ${project.color || 'bg-muted'} border border-border/50 overflow-hidden mb-6 group-hover:border-primary/30 transition-all duration-500`}>
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="aspect-[4/5] w-full flex items-center justify-center">
+                        <span className="font-headline text-2xl font-black text-primary/10 uppercase tracking-widest rotate-[-15deg]">
+                          {project.title}
+                        </span>
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center scale-0 group-hover:scale-100 transition-transform duration-500">
+                        <ArrowUpRight className="w-8 h-8" />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3 px-2 flex flex-col h-full">
                     <div className="flex items-center gap-3">
-                      <project.icon className="w-5 h-5 text-primary" />
-                      <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                      <project.icon className="w-4 h-4 text-primary" />
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
                         {project.category}
                       </span>
-                      <span className="text-xs font-medium text-muted-foreground">
+                      <span className="text-[10px] font-medium text-muted-foreground">
                         / {project.year}
                       </span>
                     </div>
-                    <Link href={`/portfolio/${project.slug}`}>
-                      <h2 className="font-headline text-4xl md:text-5xl font-bold group-hover:text-primary transition-colors leading-tight cursor-pointer">
-                        {project.title}
-                      </h2>
-                    </Link>
-                  </div>
-
-                  <div className="md:col-span-6">
-                    <Link href={`/portfolio/${project.slug}`}>
-                      <div
-                        className={`aspect-video rounded-3xl ${project.color} border border-border/50 overflow-hidden relative group-hover:border-primary/30 transition-all duration-500 cursor-pointer`}
-                      >
-                        {project.image ? (
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          />
-                        ) : (
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <span className="font-headline text-3xl font-black text-primary/10 group-hover:text-primary/20 transition-all duration-700 scale-150 uppercase tracking-[0.2em] rotate-[-15deg]">
-                              {project.title}
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    </Link>
-                    <p className="mt-8 text-muted-foreground text-lg leading-relaxed max-w-lg">
+                    <h3 className="font-headline text-2xl font-bold group-hover:text-primary transition-colors tracking-tight uppercase">
+                      {project.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm line-clamp-2">
                       {project.desc}
                     </p>
-                    <div className="mt-6">
-                      <Link
-                        href={(project as any).projectLink || "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-primary hover:text-primary/80 transition-colors group/link"
-                      >
-                        View Live Website
-                        <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                      </Link>
-                    </div>
                   </div>
-
-                  <div className="md:col-span-2 flex justify-end">
-                    <Link
-                      href={`/portfolio/${project.slug}`}
-                      className="w-16 h-16 rounded-full border border-border flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-500 transform group-hover:rotate-12"
-                    >
-                      <ArrowUpRight className="w-8 h-8" />
-                    </Link>
-                  </div>
-                </div>
+                </Link>
               </ScrollReveal>
             ))}
           </div>

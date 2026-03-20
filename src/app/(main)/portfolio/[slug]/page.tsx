@@ -52,19 +52,6 @@ const ProjectDetail = ({ params }: { params: Promise<{ slug: string }> }) => {
             </div>
           </ScrollReveal>
 
-          {project.image && (
-            <ScrollReveal delay={0.35}>
-              <div className="max-w-5xl mx-auto mb-24 px-4">
-                <div className="aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </ScrollReveal>
-          )}
         </div>
 
         {/* Project Info Bar */}
