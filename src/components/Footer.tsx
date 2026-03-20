@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { Mail, MapPin, Linkedin, Twitter, Github, ArrowRight } from "lucide-react";
+import { Mail, MapPin, Linkedin, Twitter, Github, ArrowRight, Instagram } from "lucide-react";
+import Image from "next/image";
+import logoWhite from "@/app/assets/logos/logo-white.svg";
 
 const Footer = () => {
   return (
@@ -50,13 +52,14 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           {/* Brand */}
-          <div className="flex flex-col gap-1">
-            <h3 className="font-headline text-xl font-bold text-foreground">
-              Chokmarh
-            </h3>
-            <p className="text-xs text-muted-foreground uppercase tracking-widest">
-              Systems that scale
-            </p>
+          <div className="flex flex-col gap-3">
+             <Image 
+                src={logoWhite} 
+                alt="Chokmarh Logo" 
+                height={32} 
+                className="w-auto h-8 opacity-90 hover:opacity-100 transition-opacity" 
+             />
+            
           </div>
 
           {/* Legal Links */}
@@ -72,9 +75,9 @@ const Footer = () => {
           {/* Social Icons */}
           <div className="flex gap-3">
             {[
-              { icon: <Linkedin size={18} />, href: "#" },
-              { icon: <Twitter size={18} />, href: "#" },
-              { icon: <Github size={18} />, href: "#" },
+              { icon: <Instagram   size={18} />, href: "https://www.instagram.com/chokmarhtech" },
+              { icon: <Twitter size={18} />, href: "https://www.x.com/chokmarhtech" },
+             
             ].map((social, index) => (
               <a
                 key={index}
