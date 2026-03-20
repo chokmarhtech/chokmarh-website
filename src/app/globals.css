@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Deep Blue #081953 → hsl(227 83% 18%) */
+    --background: 227 83% 18%;
+    --foreground: 210 40% 98%;
+
+    --card: 227 83% 13%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 227 83% 13%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary Blue #1A73E8 → hsl(214 82% 51%) */
+    --primary: 214 82% 51%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 227 60% 11%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 227 40% 17%;
+    --muted-foreground: 214 20% 62%;
+
+    /* Fresh Green #2BC48A → hsl(157 64% 47%) */
+    --accent: 157 64% 47%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 227 30% 22%;
+    --input: 227 30% 22%;
+    --ring: 214 82% 51%;
+
+    --radius: 0.5rem;
+
+    /* Brand tokens */
+    --deep-blue: 227 83% 18%;
+    --glow-blue: 214 82% 51%;
+    /* Soft Gray #E6E9EC → hsl(209 13% 91%) */
+    --light-structure: 209 13% 91%;
+    --success-green: 157 64% 47%;
+
+    --sidebar-background: 227 83% 9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 214 82% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 227 40% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 227 30% 22%;
+    --sidebar-ring: 214 82% 51%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(227 83% 9%) 0%, hsl(227 83% 18%) 40%, hsl(214 82% 28%) 100%);
+  }
+
+  .gradient-cta {
+    background: linear-gradient(135deg, hsl(214 82% 40%) 0%, hsl(214 82% 55%) 100%);
+  }
+
+  .gradient-card {
+    background: linear-gradient(180deg, hsl(227 83% 13%) 0%, hsl(227 83% 9%) 100%);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 30px -5px hsl(214 82% 51% / 0.3);
+  }
+
+  .glow-blue-hover:hover {
+    box-shadow: 0 0 40px -5px hsl(214 82% 51% / 0.5);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(210 40% 98%) 0%, hsl(214 82% 65%) 100%);
+  }
+
+  /* Interaction Animations */
+  .btn-hover-effect {
+    @apply transition-all duration-300 ease-out;
+  }
+  .btn-hover-effect:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+  .btn-hover-effect:active {
+    transform: scale(0.98);
+  }
+
+  .chip-hover-effect {
+    @apply transition-colors duration-200;
+  }
+  .chip-hover-effect:hover {
+    background-color: hsla(var(--accent), 0.12);
+  }
+
+  .nav-link-effect {
+    @apply relative overflow-hidden;
+  }
+  .nav-link-effect::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 origin-right transition-transform duration-300 ease-out;
+  }
+  .nav-link-effect:hover::after {
+    @apply scale-x-100 origin-left;
+  }
+
+  /* Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-delay: -1ms !important;
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      background-attachment: initial !important;
+      scroll-behavior: auto !important;
+      transition-duration: 1ms !important;
+      transition-delay: -1ms !important;
+    }
+  }
+}
+
