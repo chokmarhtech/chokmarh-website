@@ -36,10 +36,10 @@ const Footer = () => {
         {/* Contact Info */}
         <div className="flex flex-wrap justify-center gap-8 md:gap-12 mb-20 text-sm text-muted-foreground">
           <a
-            href="mailto:hello@chokmarh.tech"
+            href="mailto:hello@chokmarhtechnologies.com"
             className="flex items-center gap-2 hover:text-foreground transition-colors"
           >
-            <Mail size={16} /> hello@chokmarh.tech
+            <Mail size={16} /> hello@chokmarhtechnologies.com
           </a>
           <span className="flex items-center gap-2">
             <MapPin size={16} /> Lagos, Nigeria.
