@@ -143,7 +143,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h4 className="font-headline font-bold text-lg text-background">Email Us</h4>
-                      <p className="text-gray-600">hello@chokmarh.com</p>
+                      <p className="text-gray-600">hello@chokmarhtechnologies.com</p>
                     </div>
                   </div>
 
@@ -153,7 +153,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h4 className="font-headline font-bold text-lg text-background">Location</h4>
-                      <p className="text-gray-600">Lagos, Nigeria • Remote-First</p>
+                      <p className="text-gray-600">Lagos, Nigeria</p>
                     </div>
                   </div>
 
@@ -294,8 +294,8 @@ const ContactPage = () => {
                <div className="bg-card p-10 rounded-3xl border border-border flex flex-col items-center">
                   <MessageSquare className="w-12 h-12 text-primary mb-4" />
                   <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2">Prefer Chat?</p>
-                  <p className="text-lg font-bold text-foreground mb-6">hello@chokmarh.com</p>
-                  <Link href="mailto:hello@chokmarh.com">
+                  <p className="text-lg font-bold text-foreground mb-6">hello@chokmarhtechnologies.com</p>
+                  <Link href="mailto:hello@chokmarhtechnologies.com">
                     <Button variant="outline" className="rounded-full border-primary text-primary hover:bg-primary/10">
                       Send an Email
                     </Button>

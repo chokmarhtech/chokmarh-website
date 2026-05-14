@@ -16,10 +16,10 @@ const Footer1 = () => {
             </p>
             <div className="flex flex-col gap-2 text-sm text-muted-foreground">
               <a
-                href="mailto:hello@chokmarh.com"
+                href="mailto:hello@chokmarhtechnologies.com"
                 className="flex items-center gap-2 hover:text-primary transition-colors"
               >
-                <Mail size={14} /> hello@chokmarh.com
+                <Mail size={14} /> hello@chokmarhtechnologies.com
               </a>
               <span className="flex items-center gap-2">
                 <MapPin size={14} /> Lagos, Nigeria

@@ -8,6 +8,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import logoWhite from "@/app/assets/logos/logo-white.svg";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -91,50 +96,45 @@ const Navbar = () => {
           </Button>
         </Link>
 
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden text-foreground p-2 z-[110] relative"
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </nav>
-
-      {/* Mobile Menu Overlay */}
-      <div 
-        className={cn(
-          "fixed inset-0 z-[105] lg:hidden flex flex-col items-center justify-center bg-background transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]",
-          mobileOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
-        )}
-      >
-        <div className="flex flex-col items-center gap-8 text-center px-6 w-full">
-          {navLinks.map((link, i) => (
-            <Link
-              key={link.path}
-              href={link.path}
-              className={cn(
-                "text-3xl font-headline font-bold transition-all duration-500",
-                mobileOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
-                pathname === link.path
-                  ? "text-primary scale-110"
-                  : "text-foreground/60 hover:text-foreground",
-              )}
-              style={{ transitionDelay: `${i * 50}ms` }}
+        {/* Mobile Toggle & Menu overlay */}
+        <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+          <SheetTrigger asChild>
+            <button
+              className="lg:hidden text-foreground p-2 z-[110] relative"
+              aria-label="Toggle menu"
             >
-              {link.name}
-            </Link>
-          ))}
-          <Link href="/contact" className={cn(
-            "mt-8 w-full max-w-xs transition-all duration-500 delay-300",
-            mobileOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-          )}>
-            <Button className="gradient-cta text-primary-foreground font-medium w-full py-7 text-xl border-0 rounded-full">
-              Start Your Project
-            </Button>
-          </Link>
-        </div>
-      </div>
+              <Menu size={28} />
+            </button>
+          </SheetTrigger>
+          <SheetContent 
+            side="top" 
+            className="w-full h-[100dvh] flex flex-col items-center justify-center bg-background/80 backdrop-blur-xl border-none z-[105]"
+          >
+            <div className="flex flex-col items-center gap-8 text-center px-6 w-full">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  onClick={() => setMobileOpen(false)}
+                  className={cn(
+                    "text-3xl font-headline font-bold transition-all duration-300",
+                    pathname === link.path
+                      ? "text-primary scale-110"
+                      : "text-foreground/80 hover:text-foreground",
+                  )}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <Link href="/contact" onClick={() => setMobileOpen(false)} className="mt-8 w-full max-w-xs">
+                <Button className="gradient-cta text-primary-foreground font-medium w-full py-7 text-xl border-0 rounded-full">
+                  Start Your Project
+                </Button>
+              </Link>
+            </div>
+          </SheetContent>
+        </Sheet>
+      </nav>
     </header>
   );
 };
